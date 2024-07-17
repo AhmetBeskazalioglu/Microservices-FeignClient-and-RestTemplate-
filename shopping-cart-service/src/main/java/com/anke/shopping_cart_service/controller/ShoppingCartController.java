@@ -1,5 +1,6 @@
 package com.anke.shopping_cart_service.controller;
 
+import com.anke.shopping_cart_service.entity.Product;
 import com.anke.shopping_cart_service.entity.ShoppingCart;
 import com.anke.shopping_cart_service.service.ShoppingCartService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,9 +28,15 @@ public class ShoppingCartController {
         return shoppingCartService.addProducts(shoppingCartId, products);
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/price/{id}")
     public ResponseEntity<Map<String, String>> getShoppingCartPrice(
             @PathVariable("id") Long shoppingCartId) {
         return shoppingCartService.getShoppingCartPrice(shoppingCartId);
+    }
+
+    @GetMapping("{id}")
+    public ResponseEntity<ShoppingCart> getShoppingCartById(
+            @PathVariable("id") Long shoppingCartId) {
+        return shoppingCartService.getShoppingCartById(shoppingCartId);
     }
 }

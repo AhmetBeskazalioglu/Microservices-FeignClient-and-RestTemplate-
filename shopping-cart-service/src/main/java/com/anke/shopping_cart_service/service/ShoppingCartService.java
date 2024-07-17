@@ -54,4 +54,9 @@ public class ShoppingCartService {
 
         return ResponseEntity.ok().body(response);
     }
+
+    public ResponseEntity<ShoppingCart> getShoppingCartById(Long shoppingCartId) {
+        return ResponseEntity.ok().body(shoppingCartRepository.findById(shoppingCartId)
+                .orElseThrow(() -> new RuntimeException("Shopping cart not found")));
+    }
 }
