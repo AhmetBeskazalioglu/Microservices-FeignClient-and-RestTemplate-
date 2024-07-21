@@ -1,6 +1,6 @@
 package com.anke.shopping_cart_service_feignclient.controller;
 
-import com.anke.shopping_cart_service_feignclient.entity.Product;
+import com.anke.shopping_cart_service_feignclient.entity.ProductFeignClient;
 import com.anke.shopping_cart_service_feignclient.entity.ShoppingCartFeignClient;
 import com.anke.shopping_cart_service_feignclient.service.ShoppingCartService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +32,7 @@ public class ShoppingCartController {
     }
 
     @PostMapping("/{shoppingCartId}")
-    public ResponseEntity<ShoppingCartFeignClient> addExistingProductsToCart(@RequestBody List<Product> products,
+    public ResponseEntity<ShoppingCartFeignClient> addExistingProductsToCart(@RequestBody List<ProductFeignClient> products,
                                                                              @PathVariable("shoppingCartId") Long shoppingCartId) {
         shoppingCartService.addExistingProductsToCart(products, shoppingCartId);
         return shoppingCartService.getCartById(shoppingCartId);

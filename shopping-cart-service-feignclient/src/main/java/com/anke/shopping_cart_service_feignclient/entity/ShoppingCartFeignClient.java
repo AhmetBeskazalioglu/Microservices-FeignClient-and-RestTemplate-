@@ -2,6 +2,7 @@ package com.anke.shopping_cart_service_feignclient.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -18,7 +19,7 @@ public class ShoppingCartFeignClient {
             name = "shopping_cart_product_feignclient",
             joinColumns = @JoinColumn(name = "shopping_cart_id"),
             inverseJoinColumns = @JoinColumn(name = "product_id"))
-    private Set<Product> products;
+    private Set<ProductFeignClient> products;
 
     public Long getId() {
         return id;
@@ -36,11 +37,11 @@ public class ShoppingCartFeignClient {
         this.shoppincartName = shoppincartName;
     }
 
-    public Set<Product> getProducts() {
+    public Set<ProductFeignClient> getProducts() {
         return products;
     }
 
-    public void setProducts(Set<Product> products) {
+    public void setProducts(Set<ProductFeignClient> products) {
         this.products = products;
     }
 }

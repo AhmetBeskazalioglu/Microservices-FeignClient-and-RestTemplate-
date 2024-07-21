@@ -1,12 +1,13 @@
 package com.anke.shopping_cart_service_feignclient.service;
 
-import com.anke.shopping_cart_service_feignclient.entity.Product;
+import com.anke.shopping_cart_service_feignclient.entity.ProductFeignClient;
 import com.anke.shopping_cart_service_feignclient.entity.ShoppingCartFeignClient;
 import com.anke.shopping_cart_service_feignclient.feignclient.ProductClient;
 import com.anke.shopping_cart_service_feignclient.repository.ShoppingCartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -30,13 +31,13 @@ public class ShoppingCartService {
         return ResponseEntity.ok(shoppingCart);
     }
 
-    public ResponseEntity<ShoppingCartFeignClient> addExistingProductsToCart(List<Product> products, Long shoppingCartId) {
+    public ResponseEntity<ShoppingCartFeignClient> addExistingProductsToCart(List<ProductFeignClient> products, Long shoppingCartId) {
 
         ShoppingCartFeignClient shoppingCart = shoppingCartRepository.findById(shoppingCartId)
                 .orElseThrow(() -> new RuntimeException("Shopping cart not found"));
 
         products.forEach(product -> {
-            Product productFeignClient = productClient.getProductById(product.getId());
+            ProductFeignClient productFeignClient = productClient.getProductById(product.getId());
             if (productFeignClient != null) {
                 shoppingCart.getProducts().add(productFeignClient);
             } else {
