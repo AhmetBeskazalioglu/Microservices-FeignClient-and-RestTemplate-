@@ -9,6 +9,8 @@
         <option value="$PROJECT_DIR$/product-service/pom.xml" />
         <option value="$PROJECT_DIR$/discovery-server/pom.xml" />
         <option value="$PROJECT_DIR$/shopping-cart-service/pom.xml" />
+        <option value="$PROJECT_DIR$/shopping-cart-service-feignclient/pom.xml" />
+        <option value="$PROJECT_DIR$/Ecommerce-Web/pom.xml" />
       </list>
     </option>
   </component>

@@ -22,6 +22,12 @@ public class ShoppingCartController {
         return shoppingCartService.create(name);
     }
 
+    @GetMapping("{id}")
+    public ResponseEntity<ShoppingCart> getShoppingCartById(
+            @PathVariable("id") Long shoppingCartId) {
+        return shoppingCartService.getShoppingCartById(shoppingCartId);
+    }
+
     @PostMapping("{id}")
     public ResponseEntity<ShoppingCart> addProducts(
             @PathVariable("id") Long shoppingCartId, @RequestBody List<Product> products) {
@@ -34,9 +40,4 @@ public class ShoppingCartController {
         return shoppingCartService.getShoppingCartPrice(shoppingCartId);
     }
 
-    @GetMapping("{id}")
-    public ResponseEntity<ShoppingCart> getShoppingCartById(
-            @PathVariable("id") Long shoppingCartId) {
-        return shoppingCartService.getShoppingCartById(shoppingCartId);
-    }
 }
