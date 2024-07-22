@@ -32,4 +32,29 @@ public class ProductService {
         return ResponseEntity.ok().body(productRepository.findAll());
     }
 
+    public Product updateProduct(Long productId, Product product) {
+        Product existingProduct = productRepository.findById(productId)
+                .orElseThrow(() -> new RuntimeException("Product not found in DB"));
+
+        existingProduct.setName(product.getName());
+        existingProduct.setPrice(product.getPrice());
+        existingProduct.setDescription(product.getDescription());
+        existingProduct.setCategory(product.getCategory());
+
+        return productRepository.save(existingProduct);
+    }
+
+    public String deleteProduct(Long productId) {
+        Product existingProduct = productRepository.findById(productId)
+                .orElseThrow(() -> new RuntimeException("Product not found in DB"));
+
+        if (existingProduct != null) {
+            productRepository.delete(existingProduct);
+            return "Product with id: " + productId + " deleted successfully";
+        } else {
+            return "Product with id: " + productId + " not found in DB";
+        }
+    }
+
+
 }

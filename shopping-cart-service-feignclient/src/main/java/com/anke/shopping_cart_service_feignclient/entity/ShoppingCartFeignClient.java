@@ -19,7 +19,7 @@ public class ShoppingCartFeignClient {
             name = "shopping_cart_product_feignclient",
             joinColumns = @JoinColumn(name = "shopping_cart_id"),
             inverseJoinColumns = @JoinColumn(name = "product_id"))
-    private Set<ProductFeignClient> products;
+    private Set<Product> products;
 
     public Long getId() {
         return id;
@@ -37,11 +37,11 @@ public class ShoppingCartFeignClient {
         this.shoppincartName = shoppincartName;
     }
 
-    public Set<ProductFeignClient> getProducts() {
+    public Set<Product> getProducts() {
         return products;
     }
 
-    public void setProducts(Set<ProductFeignClient> products) {
+    public void setProducts(Set<Product> products) {
         this.products = products;
     }
 }
