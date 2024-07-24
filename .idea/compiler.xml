@@ -10,6 +10,7 @@
         <module name="API-Gateway" />
         <module name="config-server" />
         <module name="discovery-server" />
+        <module name="E-Commerce-Web-Anke" />
         <module name="product-service" />
         <module name="shopping-cart-service-feignclient" />
         <module name="shopping-cart-service" />
@@ -19,6 +20,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="API-Gateway" options="-parameters" />
+      <module name="E-Commerce-Web-Anke" options="-parameters" />
       <module name="Ecommerce-Web" options="-parameters" />
       <module name="config-server" options="-parameters" />
       <module name="discovery-server" options="-parameters" />
