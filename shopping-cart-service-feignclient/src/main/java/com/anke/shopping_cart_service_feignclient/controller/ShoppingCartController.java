@@ -27,6 +27,13 @@ public class ShoppingCartController {
         return ResponseEntity.ok().body(sc);
     }
 
+    @PostMapping("/create/empty")
+    public ResponseEntity<ShoppingCartFeignClient> createCart() {
+        ShoppingCartFeignClient sc = new ShoppingCartFeignClient();
+        shoppingCartService.createCart(sc);
+        return ResponseEntity.ok().body(sc);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<ShoppingCartFeignClient> getCartById(@PathVariable("id") Long id) {
         return shoppingCartService.getCartById(id);

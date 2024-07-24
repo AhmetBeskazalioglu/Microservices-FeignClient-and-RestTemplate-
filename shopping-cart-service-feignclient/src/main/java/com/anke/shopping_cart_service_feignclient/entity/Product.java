@@ -20,6 +20,8 @@ public class Product {
 
     private String category;
 
+    private String image;
+
     @JsonIgnore
     @ManyToMany(mappedBy = "products")
     private Set<ShoppingCartFeignClient> shoppingCarts;
@@ -62,6 +64,14 @@ public class Product {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public Set<ShoppingCartFeignClient> getShoppingCarts() {

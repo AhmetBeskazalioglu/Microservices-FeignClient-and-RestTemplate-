@@ -3,6 +3,7 @@ package com.anke.E_Commerce_Web_Anke.feignclient;
 import com.anke.E_Commerce_Web_Anke.entity.Product;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -11,4 +12,7 @@ public interface ProductClient {
 
     @GetMapping("/api/product")
     List<Product> getAllProducts();
+
+    @GetMapping("/api/product/{id}")
+    Product getProductById(@PathVariable("id") Long id);
 }

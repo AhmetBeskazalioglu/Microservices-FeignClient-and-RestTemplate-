@@ -1,23 +1,11 @@
-package com.anke.shopping_cart_service_feignclient.entity;
-
-import jakarta.persistence.*;
+package com.anke.E_Commerce_Web_Anke.entity;
 
 import java.util.Set;
 
-@Entity
-public class ShoppingCartFeignClient {
+public class ShoppingCart {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String shoppincartName;
-
-    @ManyToMany
-    @JoinTable(
-            name = "shopping_cart_product_feignclient",
-            joinColumns = @JoinColumn(name = "shopping_cart_id"),
-            inverseJoinColumns = @JoinColumn(name = "product_id"))
     private Set<Product> products;
 
     public Long getId() {
