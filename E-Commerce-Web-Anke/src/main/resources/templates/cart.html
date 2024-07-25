@@ -22,13 +22,13 @@
             <p th:text="${product.description}"></p>
             <p><strong>Category:</strong> <span th:text="${product.category}"></span></p>
             <p class="product-price" th:text="${product.price} + ' TL'"></p>
-            <form th:action="@{/cart/{cartId}/product/{productId}/remove(cartId=${cart.id}, productId=${product.id})}" method="post">
+            <form th:action="@{/api/feign-client/cart/{cartId}/product/{productId}/remove(cartId=${cart.id}, productId=${product.id})}" method="post">
                 <button type="submit" class="btn btn-danger">Ürünü Çıkar</button>
             </form>
         </div>
     </div>
     <div class="text-center mt-4">
-        <form th:action="@{/cart/{cartId}/products/remove(cartId=${cart.id})}" method="post">
+        <form th:action="@{/api/feign-client/cart/{cartId}/products/remove(cartId=${cart.id})}" method="post">
             <button type="submit" class="btn btn-danger">Tüm Ürünleri Çıkar</button>
         </form>
     </div>

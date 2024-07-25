@@ -27,12 +27,10 @@ public class ProductController {
     }
 
     @GetMapping("/home")
-    public ModelAndView getProductsHome(Model model) {
+    public String getProductsHome(Model model) {
         List<Product> products = productClient.getAllProducts();
         model.addAttribute("products", products);
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("/home");
-        return modelAndView;
+        return "home";
     }
 
 }

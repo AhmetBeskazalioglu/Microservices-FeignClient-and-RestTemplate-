@@ -9,11 +9,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
 @Controller
-@RequestMapping("/cart")
+@RequestMapping("api/feign-client/cart")
 public class CartController {
 
     @Autowired
@@ -22,13 +23,22 @@ public class CartController {
     @Autowired
     private ShoppingCartClient shoppingCartClient;
 
+    @Autowired
+    private ProductController productController;
+
     private Long currentCartId = 1L;
 
     @PostMapping("/add")
-    public String addProductsToCart(@RequestParam("productId") Long productId) {
+    public String addProductsToCart(@RequestParam("productId") Long productId, Model model) {
         Product product = productClient.getProductById(productId);
         shoppingCartClient.addExistingProductsToCart(List.of(product), currentCartId);
-        return "redirect:/api/feign-client/home";
+
+        List<Product> products = productClient.getAllProducts();
+        model.addAttribute("products", products);
+        model.addAttribute("addedProductId", productId);
+
+        //return "redirect:/api/feign-client/home";
+        return productController.getProductsHome(model);
     }
 
     @GetMapping
@@ -39,14 +49,16 @@ public class CartController {
     }
 
     @PostMapping("/{cartId}/product/{productId}/remove")
-    public String removeProductFromCart(@PathVariable Long cartId, @PathVariable Long productId) {
+    public String removeProductFromCart(@PathVariable Long cartId, @PathVariable Long productId,Model model) {
         shoppingCartClient.removeProduct(cartId, productId);
-        return "redirect:/cart";
+        //return "redirect:/api/feign-client/cart";
+        return viewCart(model);
     }
 
     @PostMapping("/{cartId}/products/remove")
-    public String removeAllProductsFromCart(@PathVariable Long cartId) {
+    public String removeAllProductsFromCart(@PathVariable Long cartId,Model model) {
         shoppingCartClient.removeAllProducts(cartId);
-        return "redirect:/cart";
+        //return "redirect:/api/feign-client/cart";
+        return viewCart(model);
     }
 }
