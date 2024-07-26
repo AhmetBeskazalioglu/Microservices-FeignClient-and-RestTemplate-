@@ -5,9 +5,7 @@ import com.anke.E_Commerce_Web_Anke.feignclient.ProductClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -32,5 +30,24 @@ public class ProductController {
         model.addAttribute("products", products);
         return "home";
     }
+
+    @PostMapping("/showFormForAdd")
+    public String createProduct(Model model) {
+        List<Product> products = productClient.getAllProducts();
+        model.addAttribute("products", products);
+
+        Product product = new Product();
+        model.addAttribute("product", product);
+
+        return "management/addproduct";
+    }
+
+    @PostMapping("/saveProduct")
+    public String saveProduct(@ModelAttribute Product product,Model model) {
+        productClient.createProduct(product);
+        return createProduct(model);
+    }
+
+
 
 }

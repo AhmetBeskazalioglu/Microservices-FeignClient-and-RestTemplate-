@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
@@ -9,10 +9,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 text-center">
-                    <span>
-                        | Logged user: <span></span> |
-                        Roles: <span></span> |
-                        <a th:href="@{/logout}">Sign Out</a>
+                    <span sec:authorize="isAuthenticated()">
+                | Logged user: <span sec:authentication="name"></span> |
+                Roles: <span sec:authentication="principal.authorities"></span> |
+                <a th:href="@{/logout}">Sign Out</a>
                     </span>
                     <p>&copy; 2024 Ahmet Beskazalioglu</p>
                 </div>

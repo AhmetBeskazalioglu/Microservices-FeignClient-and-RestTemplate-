@@ -31,8 +31,8 @@ public class SecurityConfig {
 
         http
                 .authorizeHttpRequests(configurer -> configurer
-                        .requestMatchers(HttpMethod.GET, "/api/feign-client/home").hasAnyRole("EMPLOYEE", "CLIENT")
-                        .requestMatchers(HttpMethod.GET, "/api/feign-client/cart").hasAnyRole("MANAGER")
+                        .requestMatchers(HttpMethod.GET, "/api/feign-client/**").hasAnyRole("EMPLOYEE", "CLIENT")
+                     //  .requestMatchers(HttpMethod.GET, "/api/feign-client/cart").hasAnyRole("MANAGER")
                         .requestMatchers(HttpMethod.GET, "/employees/showFormForUpdate/**").hasAnyRole("MANAGER")
                         .requestMatchers(HttpMethod.GET, "/employees/delete/**").hasRole("ADMIN")
                         .anyRequest().authenticated()

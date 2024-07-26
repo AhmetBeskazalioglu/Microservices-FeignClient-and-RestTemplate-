@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head></head>
 <body>
 <div th:fragment="products">
@@ -28,6 +28,11 @@
                 Ürün sepete eklendi!
             </div>
         </div>
+    </div>
+
+    <!-- Yönetim için buton -->
+    <div sec:authorize="hasRole('EMPLOYEE')">
+        <a href="/management" class="btn-add">Management</a>
     </div>
 </div>
 </body>

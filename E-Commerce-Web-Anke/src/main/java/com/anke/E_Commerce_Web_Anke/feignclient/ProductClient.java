@@ -4,6 +4,7 @@ import com.anke.E_Commerce_Web_Anke.entity.Product;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -15,4 +16,7 @@ public interface ProductClient {
 
     @GetMapping("/api/product/{id}")
     Product getProductById(@PathVariable("id") Long id);
+
+    @PostMapping("/api/product")
+    Product createProduct(Product product);
 }
