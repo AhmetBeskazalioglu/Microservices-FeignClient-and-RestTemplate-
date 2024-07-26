@@ -23,9 +23,11 @@
         <td th:text="${product.image}"></td>
         <td>
 
-            <!--   <a sec:authorize="hasRole('MANAGER')" th:href="@{/employees/showFormForUpdate/{employeeId}(employeeId=${tempEmployee.id})}"  class="btn-update">Update</a>
-               <a sec:authorize="hasRole('ADMIN')" th:href="@{/employees/delete/{employeeId}(employeeId=${tempEmployee.id})}" class="btn-delete" onclick="return confirm('Are you sure you want to delete this employee?');">Delete</a>
-           -->
+<!--
+               <a sec:authorize="hasRole('MANAGER')" th:href="@{/employees/showFormForUpdate/{employeeId}(employeeId=${tempEmployee.id})}"  class="btn-update">Update</a>
+-->
+               <a sec:authorize="hasRole('ADMIN')" th:href="@{/api/feign-client/deleteProduct/{id}(id=${product.id})}" class="btn-delete" onclick="return confirm('Are you sure you want to delete this employee?');">Delete</a>
+
         </td>
     </tr>
     </tbody>

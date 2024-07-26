@@ -11,7 +11,7 @@ import java.util.List;
 
 
 @Controller
-@RequestMapping("api/feign-client")
+@RequestMapping("/api/feign-client")
 public class ProductController {
 
     @Autowired
@@ -45,6 +45,12 @@ public class ProductController {
     @PostMapping("/saveProduct")
     public String saveProduct(@ModelAttribute Product product,Model model) {
         productClient.createProduct(product);
+        return createProduct(model);
+    }
+
+    @GetMapping("/deleteProduct/{id}")
+    public String deleteProduct(@ModelAttribute("id") Long id, Model model) {
+        productClient.deleteProduct(id);
         return createProduct(model);
     }
 

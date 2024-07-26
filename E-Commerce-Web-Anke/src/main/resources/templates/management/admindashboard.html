@@ -7,10 +7,15 @@
 <hr>
 <div sec:authorize="hasRole('EMPLOYEE')">
     <form th:action="@{/api/feign-client/showFormForAdd}" method="post">
-        <input type="submit" class="btn-add" value="Add Product">
+        <input type="submit" class="btn-add" value="Product Management">
     </form>
 </div>
-
+<!--<div sec:authorize="hasRole('MANAGER')">
+    <form th:action="@{/api/feign-client/showForUpdate}" method="post">
+        <input type="submit" class="btn-add" value="Add Product">
+    </form>
+</div>-->
+<hr>
 <form th:action="@{/logout}" method="post">
     <input type="submit" class="logout-button" value="Çıkış Yap">
 </form>
