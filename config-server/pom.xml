@@ -11,7 +11,7 @@
 	<groupId>com.anke</groupId>
 	<artifactId>config-server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>config-server</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
@@ -76,5 +76,6 @@
 			</plugin>
 		</plugins>
 	</build>
+
 
 </project>
